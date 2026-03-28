@@ -1,0 +1,16 @@
+---
+description: After making project changes, commit and push to origin
+alwaysApply: true
+---
+
+# Git: commit and push after updates
+
+When you edit files in this repository as part of the user’s request:
+
+1. **Stage** relevant changes (`git add` for the files you touched, plus any new assets such as images).
+2. **Commit** with a short, clear message describing the change.
+3. **Push** to `origin` on the current branch (usually `main`).
+
+Do this **in the same turn** as the edits unless the user explicitly asks not to commit/push. If there is nothing to commit, say so and skip push.
+
+If push fails (auth, network), report the error and leave the commit local.
