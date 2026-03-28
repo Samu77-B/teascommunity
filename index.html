@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teas, Coffees, Community | Coming Soon</title>
+    <meta name="description" content="Teas, Coffees, Community - Bringing people together over a warm cup. Coming soon.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><path fill='%238B5A2B' d='M12 24h36v4c0 14-8 24-18 24S12 42 12 28v-4z'/><path fill='none' stroke='%238B5A2B' stroke-width='4' d='M48 28h6c4 0 6 2 6 6s-2 6-6 6h-6'/><rect fill='%238B5A2B' x='8' y='56' width='44' height='4' rx='2'/></svg>">
+    <link rel="apple-touch-icon" href="logoIcon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-cream: #FAF7F2;
+            --color-warm-brown: #8B5A2B;
+            --color-dark-brown: #4A3728;
+            --color-sage: #9CAF88;
+            --color-terracotta: #C17F59;
+            --color-soft-white: #FFFEF9;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--color-cream);
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1542181961-9590d0c79dab?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Decorative steam animation */
+        .steam-container {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            pointer-events: none;
+            opacity: 0.15;
+        }
+
+        .steam {
+            width: 8px;
+            height: 80px;
+            background: linear-gradient(to top, var(--color-warm-brown), transparent);
+            border-radius: 50%;
+            position: absolute;
+            animation: steam 3s ease-in-out infinite;
+        }
+
+        .steam:nth-child(1) { left: -20px; animation-delay: 0s; }
+        .steam:nth-child(2) { left: 0; animation-delay: 0.5s; }
+        .steam:nth-child(3) { left: 20px; animation-delay: 1s; }
+
+        @keyframes steam {
+            0% {
+                transform: translateY(0) scaleX(1);
+                opacity: 0;
+            }
+            15% {
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-60px) scaleX(1.5);
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-120px) scaleX(2);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            max-width: 600px;
+            text-align: center;
+            z-index: 1;
+        }
+
+        /* Cup icon */
+        .cup-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 2rem;
+            position: relative;
+        }
+
+        .cup-icon svg {
+            width: 100%;
+            height: 100%;
+            fill: var(--color-soft-white);
+            color: var(--color-soft-white);
+            stroke: var(--color-soft-white);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 700;
+            color: var(--color-soft-white);
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            color: var(--color-terracotta);
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .divider-line {
+            width: 60px;
+            height: 2px;
+            background: var(--color-sage);
+            border-radius: 1px;
+        }
+
+        .divider-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--color-terracotta);
+            border-radius: 50%;
+        }
+
+        .message {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--color-dark-brown);
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+        }
+
+        .coming-soon {
+            display: inline-block;
+            background: var(--color-dark-brown);
+            color: var(--color-soft-white);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            box-shadow: 0 4px 20px rgba(74, 55, 40, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .coming-soon:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(74, 55, 40, 0.3);
+        }
+
+        .contact {
+            margin-top: 3rem;
+            font-size: 0.95rem;
+            color: var(--color-warm-brown);
+        }
+
+        .contact a {
+            color: var(--color-dark-brown);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid var(--color-sage);
+            transition: border-color 0.3s ease;
+        }
+
+        .contact a:hover {
+            border-color: var(--color-terracotta);
+        }
+
+        /* Decorative leaves */
+        .decoration {
+            position: absolute;
+            opacity: 0.08;
+            pointer-events: none;
+        }
+
+        .decoration-1 {
+            top: 10%;
+            left: 5%;
+            width: 150px;
+            transform: rotate(-15deg);
+        }
+
+        .decoration-2 {
+            bottom: 10%;
+            right: 5%;
+            width: 120px;
+            transform: rotate(25deg);
+        }
+
+        .decoration svg {
+            width: 100%;
+            fill: var(--color-dark-brown);
+        }
+
+        footer {
+            position: absolute;
+            bottom: 2rem;
+            font-size: 0.8rem;
+            color: var(--color-soft-white);
+            opacity: 0.8;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 480px) {
+            .cup-icon {
+                width: 60px;
+                height: 60px;
+            }
+
+            .message {
+                font-size: 1rem;
+            }
+
+            .decoration {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Decorative steam -->
+    <div class="steam-container">
+        <div class="steam"></div>
+        <div class="steam"></div>
+        <div class="steam"></div>
+    </div>
+
+    <!-- Decorative leaves -->
+    <div class="decoration decoration-1">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50 5C30 20 15 45 20 75C25 85 35 90 50 90C65 90 75 85 80 75C85 45 70 20 50 5Z"/>
+            <path d="M50 25V85" stroke="currentColor" stroke-width="2" fill="none" opacity="0.5"/>
+        </svg>
+    </div>
+    <div class="decoration decoration-2">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50 5C30 20 15 45 20 75C25 85 35 90 50 90C65 90 75 85 80 75C85 45 70 20 50 5Z"/>
+            <path d="M50 25V85" stroke="currentColor" stroke-width="2" fill="none" opacity="0.5"/>
+        </svg>
+    </div>
+
+    <div class="container">
+        <!-- Cup Icon -->
+        <div class="cup-icon">
+            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 24h36v4c0 14-8 24-18 24S12 42 12 28v-4z"/>
+                <path d="M48 28h6c4 0 6 2 6 6s-2 6-6 6h-6" fill="none" stroke="currentColor" stroke-width="4"/>
+                <rect x="8" y="56" width="44" height="4" rx="2"/>
+                <path d="M24 8c0-4 4-4 4 0s4 4 4 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M32 4c0-4 4-4 4 0s4 4 4 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+        </div>
+
+        <h1 class="logo">Teas, Coffees, Community</h1>
+
+    </div>
+
+    <footer>
+        &copy; 2026 Teas, Coffees, Community
+    </footer>
+</body>
+</html>
