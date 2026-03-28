@@ -89,8 +89,8 @@
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
-            width: min(88vw, 360px);
-            max-height: min(80vh, 600px);
+            width: min(450px, 100vw - 2rem, 110vw);
+            max-height: min(100vh, 750px);
             z-index: 2;
             pointer-events: none;
             filter: drop-shadow(0 20px 50px rgba(0, 0, 0, 0.5));
@@ -99,7 +99,7 @@
         .book-overlay img {
             width: 100%;
             height: auto;
-            max-height: min(80vh, 600px);
+            max-height: min(100vh, 750px);
             object-fit: contain;
             display: block;
             margin: 0 auto;
@@ -144,12 +144,12 @@
 
         @media (max-width: 480px) {
             .book-overlay {
-                width: min(90vw, 300px);
-                max-height: min(70vh, 520px);
+                width: min(375px, 100vw - 2rem, 112.5vw);
+                max-height: min(87.5vh, 650px);
             }
 
             .book-overlay img {
-                max-height: min(70vh, 520px);
+                max-height: min(87.5vh, 650px);
             }
 
             .decoration {
